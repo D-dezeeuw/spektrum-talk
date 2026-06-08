@@ -530,7 +530,6 @@
   $('#engine').textContent='· running on Spektrum';
 
   let current = 0;   // updated only by the system callback below
-  let tip = 0;       // furthest slide appended to history
 
   addSystem(['slide'], (state)=>{
     if (typeof state.slide === 'number') current = state.slide;
@@ -540,8 +539,8 @@
   function render(){
     const idx=Math.max(0,Math.min(TOTAL-1,current|0));
     slides.forEach((s,k)=>s.classList.toggle('active',k===idx));
-    // progress = applied entries / total recorded = cursor / history.length.
-    // Scrubbing back lowers cursor while history is preserved → bar shrinks.
+    // The whole deck is pre-indexed into history, so cursor / history.length
+    // is a true progress gradient (scrubbing back lowers it, not stuck at 100%).
     const len=spektrum.history.length||1;
     $('#bar').style.width=(spektrum.cursor/len*100)+'%';
     $('#cur').textContent=idx+1;
@@ -555,10 +554,21 @@
     return cp ? cp.index : -1;
   }
 
-  // Seed slide 0 as the first recorded slice of history.
-  setValue('slide', 0, 'goto:0');
-  checkpoint(cpId(0));
-  tick();   // merge delta → appState and fire the system synchronously
+  // Pre-index EVERY slide into history once, upfront. Navigation is then pure
+  // replay() to an already-recorded checkpoint: the cursor walks a fixed
+  // timeline (so the progress bar is a real gradient, never stuck at 100%),
+  // and because we never write after a scrub, linear back/forward never forks.
+  for (let n = 0; n < TOTAL; n++){
+    setValue('slide', n, 'goto:'+n);
+    checkpoint(cpId(n));
+    tick();
+  }
+  function gotoIndex(target){   // jump to a slide by replaying to its checkpoint — no writes
+    const i = cpIndex(target);
+    replay(i >= 0 ? i + 1 : 0);
+    tick();
+  }
+  gotoIndex(0);                 // rewind the freshly-built timeline to the first slide
 
   // ---- Two-window sync (presenter laptop ↔ audience projector) --------
   // Same-origin BroadcastChannel. Each window runs its own Spektrum instance;
@@ -567,24 +577,10 @@
   try { channel=new BroadcastChannel('spektrum-deck'); } catch(_){ /* unsupported → single window still works */ }
   function broadcast(index){ if(channel) channel.postMessage({type:'goto', index}); }
 
-  // ---- Navigation — absolute, so a remote window (or sync) can drive it
-  function appendSlide(target){
-    setValue('slide', target, 'goto:'+target);
-    checkpoint(cpId(target));
-    tip=Math.max(tip,target);
-    tick();
-  }
+  // ---- Navigation — absolute, pure replay (history is fully pre-indexed) ----
   function gotoAbs(target, fromRemote){
     target=Math.max(0,Math.min(TOTAL-1,target));
-    if(target!==current){
-      if(target<=tip){
-        // Already in history → replay to that checkpoint (index+1 lands past it).
-        const i=cpIndex(target);
-        if(i>=0){ replay(i+1); tick(); } else { appendSlide(target); }
-      } else {
-        appendSlide(target);   // new ground past the tip
-      }
-    }
+    if(target!==current) gotoIndex(target);   // replay only — never writes, never forks
     if(!fromRemote) broadcast(target);
   }
   function go(dir){ gotoAbs(current+dir); }
