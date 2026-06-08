@@ -108,89 +108,126 @@
   @keyframes float{50%{transform:translateY(-10px) rotate(-2deg)}}
 
   .strike{text-decoration:line-through;text-decoration-color:var(--hot);text-decoration-thickness:3px;color:var(--dim)}
+
+  /* ---- Presenter view (press P): notes + timer on the laptop, slides on the projector ---- */
+  #presenter,#pv-hint{display:none}
+  body.presenter .deck,body.presenter .bar,body.presenter .chrome{display:none!important}
+  body.presenter #presenter{display:grid}
+  body.presenter #pv-hint{display:block}
+  #presenter{
+    position:fixed;inset:0;z-index:90;background:#070510;
+    grid-template-columns:1.55fr 1fr;grid-template-rows:auto 1fr;gap:16px;padding:16px 20px 30px;
+  }
+  #pv-top{grid-column:1/3;display:flex;align-items:center;gap:1.4rem;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+  #pv-top .big{font-family:var(--disp);font-size:1.3rem;letter-spacing:0;color:var(--ink)}
+  #pv-top .pos{color:var(--acid)}
+  #pv-top .warn{color:var(--amber)}
+  #pv-top .clock{margin-left:auto;font-family:var(--disp);font-size:1.1rem;color:var(--cyan)}
+  #pv-audience{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.32rem .7rem;cursor:pointer}
+  #pv-audience:hover{border-color:var(--acid);color:var(--acid)}
+  #pv-left,#pv-right{display:flex;flex-direction:column;min-height:0;min-width:0;overflow:hidden}
+  #pv-right{gap:14px}
+  .pv-label{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--acid);margin-bottom:.45rem;display:block}
+  .pv-frame{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+  .pv-frame .pv-stage{position:absolute;top:0;left:0;transform-origin:top left}
+  .pv-frame .slide,.pv-frame .slide *{animation:none!important}
+  #pv-notes{flex:1 1 auto;min-height:0;overflow:auto;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.03);padding:.9rem 1.1rem}
+  #pv-notes h4{font-family:var(--disp);font-size:.85rem;text-transform:uppercase;color:var(--acid);margin-bottom:.5rem}
+  #pv-notes ul{margin-top:0;gap:.55rem}
+  #pv-notes li{font-size:1.02rem;line-height:1.45;color:var(--ink);max-width:none}
+  #pv-notes li::before{color:var(--cyan)}
+  #pv-notes .cue{color:var(--hot);font-weight:700}
+  #pv-notes code{color:var(--amber)}
+  #pv-notes p{font-size:1rem;line-height:1.5;color:var(--ink);max-width:none;margin-bottom:.6rem}
+  #pv-notes p:last-child{margin-bottom:0}
+  #pv-notes em{color:var(--cyan);font-style:italic}
+  #pv-hint{position:fixed;left:0;right:0;bottom:8px;text-align:center;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);z-index:95}
 </style>
 </head>
 <body>
 <div class="bar" id="bar"></div>
 <div class="deck" id="deck">
 
-  <!-- 1 TINKERER / TITLE -->
+  <!-- 1 TITLE -->
   <section class="slide">
     <div class="stagger">
-      <div class="kicker">Conference Talk · a.s.r. · npm pkg: spektrum</div>
-      <h1>I'm a <span class="acid">tinkerer</span><br>and I build for the <span class="hot float">fun</span></h1>
-      <p style="margin-top:1.6rem">After a day's work at a.s.r. I close my laptop — and almost immediately open my own. Then I start tinkering on hobby projects.</p>
-      <p class="dim" style="margin-top:1rem">As we drift toward a fully-agentic way of working, I don't want to lose the <strong>fun</strong> side of coding — the creative process of building digital things. It doesn't have to be efficient, or clean, or original. As long as you're having fun.</p>
-      <p style="margin-top:1.4rem"><span class="tag">Danny de Zeeuw</span></p>
+      <div class="kicker">Conference Talk · npm pkg: spektrum</div>
+      <h1>Escape the<br><span class="hot">Supply Chain</span>:<br>Bring a <span class="cyan float">Time Machine</span></h1>
+      <p class="dim" style="margin-top:1.8rem">How AI changed the way I think about dependencies, software ownership, and building for the future.</p>
+      <p style="margin-top:1rem"><span class="tag">Danny de Zeeuw</span></p>
     </div>
   </section>
 
-  <!-- 2 PROTOTYPES -->
+  <!-- 2 INTRO · TINKERER -->
+  <section class="slide">
+    <div class="stagger">
+      <div class="kicker">Introduction</div>
+      <h1>I'm a <span class="acid">tinkerer</span><br>I build for <span class="hot float">fun</span></h1>
+      <h3 style="margin-top:1.6rem">Not for clean. Not for efficient.<br>Just fun.</h3>
+    </div>
+  </section>
+
+  <!-- 3 PROTOTYPES -->
   <section class="slide">
     <div class="stagger">
       <div class="kicker">A thousand ideas</div>
       <h2>I build <span class="cyan">prototypes</span></h2>
-      <p>On any given day I have about a thousand things I want to build. Not to get rich — just because they're fun.</p>
-      <p style="margin-top:1rem">Lately my colleague <strong>Wessel</strong> and I have a ritual: every time a new AI model drops, we hand each other an assignment — build a prototype using <em>only</em> that model.</p>
+      <p class="dim">New model drops → Wessel and I build one, using <em>only</em> that model.</p>
       <div class="grid3">
-        <div class="card"><p class="dim">Weather apps</p></div>
-        <div class="card"><p class="dim">Interactive maps of Amsterdam</p></div>
-        <div class="card"><p class="dim">A full 3D Lego brick builder</p></div>
+        <div class="card"><h3 style="font-size:1.3rem">Weather</h3></div>
+        <div class="card"><h3 style="font-size:1.3rem">Amsterdam maps</h3></div>
+        <div class="card"><h3 style="font-size:1.3rem">3D Lego builder</h3></div>
       </div>
     </div>
   </section>
 
-  <!-- 3 BACK IN TIME · GRAVITY WAVES -->
+  <!-- 4 BACK IN TIME · GRAVITY WAVES -->
   <section class="slide">
     <div class="stagger">
       <div class="kicker">Back in time · 2023</div>
-      <h2>Gravity Waves</h2>
-      <p>I dusted off an old idea: a little spaceship game where you ride <span class="cyan">gravity waves to jump back and forth through time</span> — the game state itself could rewind. I needed two things: a small templating engine and an event store.</p>
-      <p class="dim" style="margin-top:.8rem">Every library had so much overhead and config, so I did the stupid tinkering thing and tried to build my own.</p>
+      <h1 style="font-size:clamp(2.2rem,6vw,5rem)">Gravity <span class="cyan float">Waves</span></h1>
+      <p class="dim">A game whose state could rewind through time. Needed: a template engine + an event store.</p>
       <div class="grid2">
-        <div class="card"><h3 class="dim">2023</h3><p class="dim" style="margin-top:.5rem">GPT-4 had just landed — a real step up. But hallucinations everywhere, no reasoning, and tiny context that degraded fast. Just you and a chat window.</p></div>
-        <div class="card"><h3 class="cyan">2026</h3><p class="dim" style="margin-top:.5rem">Models like <strong>Claude Opus 4.8</strong>: far more capable — but token-hungry, and you still have to guide them. And npm supply-chain attacks, seemingly every week.</p></div>
+        <div class="card"><h3 class="dim">2023</h3><p class="dim" style="margin-top:.4rem">GPT-4. No reasoning, tiny context. → stuck.</p></div>
+        <div class="card"><h3 class="cyan">2026</h3><p class="dim" style="margin-top:.4rem">Opus 4.6: capable, token-hungry. + weekly supply-chain attacks.</p></div>
       </div>
-      <p style="margin-top:1.1rem">Gravity Waves got stuck in time. But it looked like things had to <strong>change</strong>.</p>
     </div>
   </section>
 
-  <!-- 4 NPM · THE GOOD -->
+  <!-- 5 NPM · THE GOOD -->
   <section class="slide">
     <div class="stagger">
-      <div class="kicker">First, credit where it's due</div>
-      <h2>npm is a <span class="acid">success story</span></h2>
-      <p>Thousands of ready solutions, so you don't reinvent the wheel every time. You stopped coding everything yourself — and trusted the packages were relatively safe.</p>
+      <div class="kicker">Credit where it's due</div>
+      <h2>npm <span class="acid">won</span></h2>
       <div class="grid3">
-        <div class="card"><p class="dim">Routing libraries</p></div>
+        <div class="card"><p class="dim">Routing</p></div>
         <div class="card"><p class="dim">Build tools</p></div>
-        <div class="card"><p class="dim">Database drivers</p></div>
-        <div class="card"><p class="dim">Testing frameworks</p></div>
-        <div class="card"><p class="dim">Auth libraries</p></div>
-        <div class="card"><p class="acid">All the things that normally give you headaches.</p></div>
+        <div class="card"><p class="dim">DB drivers</p></div>
+        <div class="card"><p class="dim">Testing</p></div>
+        <div class="card"><p class="dim">Auth</p></div>
+        <div class="card"><p class="acid">No reinventing the wheel</p></div>
       </div>
-      <p style="margin-top:1.2rem"><strong>Dependencies are not the enemy.</strong></p>
+      <h3 style="margin-top:1.4rem">Dependencies aren't the enemy.</h3>
     </div>
   </section>
 
-  <!-- 5 THE SUPPLY CHAIN · THE BAD -->
+  <!-- 6 THE SUPPLY CHAIN · THE BAD -->
   <section class="slide">
     <div class="stagger">
-      <div class="kicker">…but lately it looked grim</div>
+      <div class="kicker">…but lately, grim</div>
       <h2>The <span class="hot">supply chain</span></h2>
-      <ul>
-        <li>Keys stolen from big and small repos; packages infected</li>
-        <li>Keeping everything up to date — a frustration of its own <span class="dim">(Mend, Checkmarx…)</span></li>
-        <li>Dependencies on long-abandoned projects I never fully controlled</li>
-        <li>Typosquatting — tricking even the AI into installing malicious packages</li>
-        <li>All that package context burned <strong>tokens</strong>. Wasteful.</li>
-      </ul>
-      <p style="margin-top:1rem">So I asked: <strong class="acid">why do I even have all these dependencies?</strong></p>
-      <p class="dim" style="margin-top:.5rem">Big production projects need rigid, mature libraries for every edge case. My prototypes don't. So — who's pulling in ExpressJS just to serve a static page?</p>
+      <div class="grid3">
+        <div class="card"><p class="hot">Stolen keys</p></div>
+        <div class="card"><p class="hot">Infected packages</p></div>
+        <div class="card"><p class="hot">Abandoned deps</p></div>
+        <div class="card"><p class="hot">Typosquatting</p></div>
+        <div class="card"><p class="hot">Token bloat</p></div>
+        <div class="card"><p class="acid">Why do I even have these?</p></div>
+      </div>
     </div>
   </section>
 
-  <!-- 6 EXPRESSJS · LIVE DEMO -->
+  <!-- 7 EXPRESSJS · LIVE DEMO -->
   <section class="slide">
     <div class="stagger">
       <div class="kicker">Live demo · same page, two ways</div>
@@ -198,13 +235,13 @@
       <div class="grid2">
         <div class="card">
           <span class="tag">app-2 · Express 5</span>
-          <p class="big-num" style="font-size:clamp(1.8rem,5vw,3.2rem);background:linear-gradient(120deg,var(--hot),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent">65 pkgs</p>
-          <p class="dim">3.7&nbsp;MB in node_modules · 64 of them transitive</p>
+          <p class="big-num" style="font-size:clamp(3rem,11vw,8rem);background:linear-gradient(120deg,var(--hot),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent">65</p>
+          <p class="dim">packages · 3.7&nbsp;MB</p>
         </div>
         <div class="card">
-          <span class="tag">app-1 · vanilla</span>
-          <p class="big-num" style="font-size:clamp(1.8rem,5vw,3.2rem)">0 deps</p>
-          <p class="dim">no install · no node_modules · no build</p>
+          <span class="tag">app-1 · vanilla http</span>
+          <p class="big-num" style="font-size:clamp(3rem,11vw,8rem)">0</p>
+          <p class="dim">deps · 3 lines</p>
         </div>
       </div>
       <div class="term" style="margin-top:1rem">
@@ -212,71 +249,66 @@
         <span class="y">const</span> fs = <span class="g">require</span>(<span class="m">'fs'</span>);<br>
         http.<span class="g">createServer</span>((req, res) =&gt; fs.<span class="g">createReadStream</span>(<span class="m">'index.html'</span>).pipe(res)).<span class="g">listen</span>(3012); <span class="blink">▋</span>
       </div>
-      <p class="dim" style="margin-top:.8rem">Both render the <em>exact</em> same page. That 3.7&nbsp;MB is a lot of attack surface for a static page. <strong>Maybe these three lines are enough.</strong></p>
     </div>
   </section>
 
-  <!-- 7 AI-FIRST -->
+  <!-- 8 AI-FIRST -->
   <section class="slide">
     <div class="stagger">
       <div class="kicker">A mindset shift</div>
       <h2>Going <span class="cyan">AI-first</span></h2>
-      <p>If I have no dependencies, the AI doesn't have to load all that context. Cheaper. More focused on what actually matters in the project. So how do I make the whole AI workflow faster and cheaper?</p>
+      <h3>No deps → less context → cheaper, sharper AI.</h3>
       <div class="pillars">
-        <div class="pillar"><h4>Zero deps</h4><p>nothing to audit, update, or burn context on</p></div>
-        <div class="pillar"><h4>Zero build</h4><p>no bundler, no config files, no GitHub Actions</p></div>
-        <div class="pillar"><h4>Pure vanilla JS</h4><p>kept only <code>.d.ts</code> files for a little TypeScript support</p></div>
+        <div class="pillar"><h4>Zero deps</h4><p>nothing to audit or burn context on</p></div>
+        <div class="pillar"><h4>Zero build</h4><p>no bundler, no config, no Actions</p></div>
+        <div class="pillar"><h4>Vanilla JS</h4><p>just <code>.d.ts</code> for types</p></div>
       </div>
-      <p class="dim" style="margin-top:1.2rem">Bonus: merge to <code>main</code> and it's instantly live on GitHub Pages — completely free.</p>
     </div>
   </section>
 
-  <!-- 8 GUINEA PIG · CONTEXT FILE -->
+  <!-- 9 GUINEA PIG · CONTEXT FILE -->
   <section class="slide">
     <div class="stagger">
       <div class="kicker">The guinea pig</div>
       <h2>I wrote a <span class="acid">context file</span></h2>
-      <p>A new model dropped, and I found my broken Gravity Waves. The perfect test: a templating engine with a built-in time-machine — zero deps, zero build. I wrote down what it was, its functionality and the new restrictions, then let the AI work it out phase by phase, to-do by to-do.</p>
-      <div class="term" style="margin-top:.8rem;font-size:.82rem;line-height:1.6">
+      <div class="term" style="font-size:.82rem;line-height:1.6">
         <span class="c"># AGENTS.md — driving Spektrum as an AI agent</span><br>
         <span class="c">## Why Spektrum for agents</span><br><br>
         <span class="y">~1100 LOC, single file</span> — the entire engine fits in<br>
         &nbsp;&nbsp;your context window. One Read and you've grokked it.<br>
         <span class="y">setValue('user.email','x')</span> — path-based mutation is<br>
         &nbsp;&nbsp;structured data, easy for an LLM to synthesize.<br>
-        <span class="y">time-travel is the primitive</span> — try an edit,<br>
-        &nbsp;&nbsp;evaluate, roll back. Every move is replayable. <span class="blink">▋</span>
+        <span class="y">time-travel is the primitive</span> — try, evaluate, roll back. <span class="blink">▋</span>
       </div>
-      <p class="dim" style="margin-top:.8rem">No endless reasoning, no drifting through dependencies, lowest token usage ever. It worked so well it became a real npm package: <strong class="acid">Spektrum</strong>.</p>
+      <h3 style="margin-top:1rem">It became <span class="acid">Spektrum</span>.</h3>
     </div>
   </section>
 
-  <!-- 9 LESS IS MORE -->
+  <!-- 10 LESS IS MORE -->
   <section class="slide">
     <div class="stagger">
       <div class="kicker">Less is more</div>
-      <h2>I became my own<br><span class="hot">dependency</span></h2>
+      <h2>I became my own <span class="hot">dependency</span></h2>
       <div class="grid3">
-        <div class="card"><h3 class="cyan" style="font-size:1.1rem">D&amp;D</h3><p class="dim">text-based AI-assisted adventure</p></div>
-        <div class="card"><h3 class="cyan" style="font-size:1.1rem">3D Lego</h3><p class="dim">brick builder client</p></div>
-        <div class="card"><h3 class="cyan" style="font-size:1.1rem">Web Stikkers</h3><p class="dim">WebGL card renderer</p></div>
-        <div class="card"><h3 class="cyan" style="font-size:1.1rem">SKYo</h3><p class="dim">weather app w/ satellite imagery</p></div>
-        <div class="card"><h3 class="cyan" style="font-size:1.1rem">SeedScape</h3><p class="dim">procedurally generated farming game</p></div>
-        <div class="card"><h3 class="acid" style="font-size:1.1rem">Spektrum</h3><p class="dim">templating + event store</p></div>
+        <div class="card"><h3 class="cyan" style="font-size:1.1rem">D&amp;D</h3><p class="dim">AI text adventure</p></div>
+        <div class="card"><h3 class="cyan" style="font-size:1.1rem">3D Lego</h3><p class="dim">brick builder</p></div>
+        <div class="card"><h3 class="cyan" style="font-size:1.1rem">Web Stikkers</h3><p class="dim">WebGL cards</p></div>
+        <div class="card"><h3 class="cyan" style="font-size:1.1rem">SKYo</h3><p class="dim">satellite weather</p></div>
+        <div class="card"><h3 class="cyan" style="font-size:1.1rem">SeedScape</h3><p class="dim">farming game</p></div>
+        <div class="card"><h3 class="acid" style="font-size:1.1rem">Spektrum</h3><p class="dim">templating + events</p></div>
       </div>
-      <p style="margin-top:1.1rem">Funny — by publishing Spektrum I became an npm dependency myself. But: <strong>no transitive deps</strong>, tiny source, and <strong class="acid">100 / 100 / 100</strong> test coverage. The attack surface is minimal.</p>
-      <p class="dim" style="margin-top:.5rem">↳ this very deck runs on Spektrum — press <strong>H</strong> for the live time-travel HUD.</p>
+      <p class="dim" style="margin-top:1.1rem">No transitive deps · tiny source · <span class="badge" style="font-size:1rem;padding:.2rem .7rem">100 / 100 / 100 tested</span></p>
     </div>
   </section>
 
-  <!-- 10 END · YOUR TURN -->
+  <!-- 11 END · YOUR TURN -->
   <section class="slide" style="align-items:center;text-align:center">
     <div class="stagger" style="margin:0 auto">
       <div class="kicker" style="justify-content:center">Your turn</div>
       <h1>Pick up the<br><span class="acid">challenge</span></h1>
-      <p style="margin:1.6rem auto 0">Take a hobby project. Try zero dependencies, zero build steps. Chances are high it'll work just fine without the baggage — and it might just be <span class="cyan">fun</span> again.</p>
+      <h3 style="margin-top:1.4rem">Zero deps. Zero build. Just <span class="cyan">fun</span>.</h3>
       <p style="margin-top:1.6rem"><span class="tag">npmjs.com/package/spektrum</span> <span class="tag">github.com/D-dezeeuw</span></p>
-      <h3 style="margin-top:1.4rem">Questions?</h3>
+      <h3 style="margin-top:1.2rem">Questions?</h3>
     </div>
   </section>
 
@@ -284,9 +316,31 @@
 
 <div class="chrome">
   <span>Spektrum · Escape the Supply Chain <span id="engine" class="dim">· booting…</span></span>
-  <span class="hint">← → / space · F fullscreen · H time-travel HUD</span>
+  <span class="hint">← → / space · F fullscreen · H HUD · P presenter</span>
   <span><span id="cur">1</span> / <span id="tot">24</span></span>
 </div>
+
+<!-- Presenter view (toggle with P). Opens a synced audience window over BroadcastChannel. -->
+<div id="presenter">
+  <div id="pv-top">
+    <span class="big" id="pv-pos"><span class="pos">1</span> / <span id="pv-tot">11</span></span>
+    <span>⏱ elapsed <span id="pv-elapsed">00:00</span></span>
+    <button id="pv-audience" type="button" class="warn">▶ open audience window</button>
+    <span class="clock">🕐 <span id="pv-clock">--:--</span></span>
+  </div>
+  <div id="pv-left">
+    <span class="pv-label">Current</span>
+    <div class="pv-frame" id="pv-current"><div class="pv-stage"></div></div>
+  </div>
+  <div id="pv-right">
+    <div>
+      <span class="pv-label">Next ▸</span>
+      <div class="pv-frame" id="pv-next"><div class="pv-stage"></div></div>
+    </div>
+    <div id="pv-notes"></div>
+  </div>
+</div>
+<div id="pv-hint">Presenter · P toggles this view · ← → navigate both screens · R reset timer · click “open audience window” ▸ drag it to the projector &amp; press F</div>
 
 <!-- Loud error banner: this deck runs ON Spektrum. No fallback by design. -->
 <div id="boot-error" style="display:none;position:fixed;inset:0;z-index:200;background:#1a0410;color:#ff3da8;
@@ -328,6 +382,61 @@
   const slides=[...document.querySelectorAll('.slide')];
   const TOTAL=slides.length;
   $('#tot').textContent=TOTAL;
+
+  // Speaker notes per slide — shown only in presenter view, never to the audience.
+  // (Kept here, not in the slide DOM, so the audience markup never carries them.)
+  const NOTES=[
+    `<h4>Title</h4>
+      <p>Welcome — <em>Escape the Supply Chain: bring a time machine.</em></p>
+      <p>How AI changed the way I think about dependencies, ownership, and building for the future. Keep it light — this is a passion talk.</p>`,
+    `<h4>Intro · tinkerer</h4>
+      <p>I'm a tinkerer, and I'm here just to share my passion with you — and to show how my workflow has changed with all the changes around us.</p>
+      <p>After a day's work at a.s.r. I close my laptop and almost immediately open my own, and start tinkering on my own hobby projects.</p>
+      <p>In a time where we're slowly getting to a full-agentic way of working, I think we must not lose sight of the fun side of coding — the creative process of building digital things. It doesn't always matter that things could be more efficient or clean, or that you're reinventing the wheel for the fifth time. As long as you're having fun.</p>`,
+    `<h4>Prototypes</h4>
+      <p>On any given day I have about a thousand ideas I want to build. Not that it's going to make me rich — just fun things I want to build.</p>
+      <p>Lately I have this thing with my colleague Wessel: every time a new AI model releases, we give each other an assignment where we have to build a prototype only with that AI model.</p>
+      <p>We build all kinds of stuff — weather apps, apps with interactive maps of Amsterdam, and a complete 3D Lego brick builder.</p>`,
+    `<h4>Gravity Waves</h4>
+      <p>One of those times, I wanted to pick one of my old ideas and see what challenges it would give me. So let's go back in time, to around 2023, when I wanted to create a small video game called "Gravity Waves".</p>
+      <p>It was supposed to be a game with a spaceship using gravity waves to jump back and forth in time. For that I needed a small templating engine and an event store to rewind time. Everything had so much overhead and configuration, so I did the stupid tinkering thing and tried to build one myself.</p>
+      <p>AIs in 2023 were less sophisticated than today, so it drifted all kinds of ways and context filled up immediately. Context files weren't really a thing — it was basically just you and the chat window. GPT-4 had just come out, a step in the right direction, but hallucinations were still a big issue, there was no reasoning, and the context window was tiny — just 8k tokens, 32k at most — and degraded fast. Gravity Waves got stuck in time and I forgot about it.</p>
+      <p>Back to 2026: now we have models like Claude Opus 4.6 — much more capable, but also token-hungry, and context-wise you still need to guide the AI. On top of that we had npm supply-chain attacks seemingly every week. To me, it looked like things had to change.</p>`,
+    `<h4>npm — the good</h4>
+      <p>First of all, npm is an amazing software-engineering success story. It gives us thousands of package solutions, so we don't have to reinvent the wheel every single time.</p>
+      <p>You didn't have to code everything yourself anymore, and you knew the packages were relatively safe and secure. It brought some awesome things: routing libraries, build tools, database drivers, testing frameworks, authentication libraries — all the things that normally give you headaches.</p>`,
+    `<h4>The supply chain</h4>
+      <p>But a few months back, npm looked a bit grim. Keys got stolen from big and small repositories, and packages got infected. Keeping all those packages up to date was a frustration all by itself (Mend, Checkmarx).</p>
+      <p>Next to that, I had dependencies on projects long abandoned, and I never had full control over the code since it depended on those sources. Not to mention typosquatting, where they tricked the AI into installing malicious packages — which kept you on your toes.</p>
+      <p>On top of that, my AI models had a hard time with all the context of all those packages; it used a lot of tokens to make sense of it. Quite wasteful.</p>
+      <p>So I asked myself: why do I even have all those npm dependencies? Don't get me wrong — with large production-level projects you need rigid, mature libraries to catch all the edge-cases. But for my prototype projects, that didn't matter. For example: who's using ExpressJS in there, or a different HTTP server?</p>`,
+    `<h4>Express — LIVE DEMO</h4>
+      <p class="cue">DEMO ▸ two terminals in examples/.</p>
+      <p>ExpressJS, just to show a static page, is a lot. <strong>app-2</strong>: <code>node app-2/app-2.js</code> (:3013) — show node_modules: Express 5 pulls in 65 packages / 3.7 MB. (The old "28 deps / 586 KB" figure was Express 4 / bundle size — use the live number on screen.)</p>
+      <p><strong>app-1</strong>: <code>node app-1.js</code> (:3012) — the same page from three lines of plain http: no install, no node_modules.</p>
+      <p>Both render the exact same page. Those transitive packages are a lot of attack surface for a static page. Maybe that single bit of code is enough.</p>`,
+    `<h4>AI-first</h4>
+      <p>Then it crossed my mind: if I don't have any dependencies, the AI doesn't have to use that much context. That should be a lot cheaper, and much more focused on what matters in the project.</p>
+      <p>So what if I went about it with an AI-first mindset — how can I make the AI workflow more efficient, faster, and cheaper? Build steps slowed me down; if I don't have those, I don't need GitHub Actions, for example. And if I don't have configuration files for every dependency, that speeds things up too. I only kept .d.ts type-declaration files for a bit of TypeScript support.</p>
+      <p>So I set myself a challenge: zero dependencies, zero build steps — just pure vanilla JavaScript. As a nice bonus, when I merge to main on GitHub, it's instantly available on GitHub Pages, completely free.</p>`,
+    `<h4>Guinea pig · context file</h4>
+      <p class="cue">SHOW ▸ open AGENTS.md (the real context file).</p>
+      <p>About a month ago a new AI model came out, and I stumbled on my old broken Gravity Waves project. This would be the perfect test: can I make a templating engine with an included time-machine — no dependencies, no build steps?</p>
+      <p>I started writing context files describing what it should be about, its functionality, plus its new restrictions, and let it work it out phase by phase, to-do item per to-do item — and it went very well. No endless reasoning, no drifting into dependencies, and the token usage was smaller than ever.</p>
+      <p>In fact it worked out so well that I turned it into an official npmjs.com package called Spektrum.</p>`,
+    `<h4>Less is more</h4>
+      <p>Unfortunately Gravity Waves never saw the light of day, but I've used Spektrum in a ton of my projects already — from a weather app to an AI-assisted Dungeons &amp; Dragons text adventure (see GitHub): D&amp;D, 3D Lego, Web Stikkers, SKYo, SeedScape, and Spektrum itself.</p>
+      <p>The funny thing is that with Spektrum I became my own npm dependency — which sort of undermines this whole session. But because it has no transitive dependencies and the source code is so small, I've limited the attack surface to a minimum. I also make sure I have a 100/100/100 score on the unit tests, so every method and branch is tested.</p>
+      <p>All in all, "less is more" worked for me and my tinkering. Sometimes going back to a time before all the build pipelines, library configurations, massive imports, and complex CI/CD is just refreshing.</p>
+      <p>(This very deck runs on Spektrum — press H for the live time-travel HUD.)</p>`,
+    `<h4>Your turn</h4>
+      <p>Lastly, I want to invite you to pick up that challenge for a hobby project, and see where it brings you. Chances are high you can implement that project just fine without all that baggage.</p>
+      <p>Questions?</p>`,
+  ];
+
+  // Presenter state — declared early so render() can read `presenting` during
+  // the seed tick (before the presenter helpers further down are defined).
+  let presenting=false, audienceWin=null, startTime=0, clockTimer=0;
 
   function fail(err){
     $('#boot-error').style.display='flex';
@@ -372,6 +481,7 @@
     $('#bar').style.width=(spektrum.cursor/len*100)+'%';
     $('#cur').textContent=idx+1;
     drawHUD();
+    if(presenting) updatePresenter(idx);
   }
 
   const cpId = n => 'slide:'+n;
@@ -385,25 +495,41 @@
   checkpoint(cpId(0));
   tick();   // merge delta → appState and fire the system synchronously
 
-  function go(dir){
-    const target=Math.max(0,Math.min(TOTAL-1,current+dir));
-    if(target===current) return;
+  // ---- Two-window sync (presenter laptop ↔ audience projector) --------
+  // Same-origin BroadcastChannel. Each window runs its own Spektrum instance;
+  // we keep them visually identical by broadcasting the absolute slide index.
+  let channel=null;
+  try { channel=new BroadcastChannel('spektrum-deck'); } catch(_){ /* unsupported → single window still works */ }
+  function broadcast(index){ if(channel) channel.postMessage({type:'goto', index}); }
 
-    if(target<=tip){
-      // Already in history (forward or back) → replay to that checkpoint.
-      // index+1 lands just past the marker; checkpoints carry no state, so
-      // the slide value is whatever the preceding setValue recorded.
-      const i=cpIndex(target);
-      if(i>=0){ replay(i+1); tick(); return; }
-    }
-    // New ground past the tip → append a fresh recorded slice.
+  // ---- Navigation — absolute, so a remote window (or sync) can drive it
+  function appendSlide(target){
     setValue('slide', target, 'goto:'+target);
     checkpoint(cpId(target));
     tip=Math.max(tip,target);
     tick();
   }
+  function gotoAbs(target, fromRemote){
+    target=Math.max(0,Math.min(TOTAL-1,target));
+    if(target!==current){
+      if(target<=tip){
+        // Already in history → replay to that checkpoint (index+1 lands past it).
+        const i=cpIndex(target);
+        if(i>=0){ replay(i+1); tick(); } else { appendSlide(target); }
+      } else {
+        appendSlide(target);   // new ground past the tip
+      }
+    }
+    if(!fromRemote) broadcast(target);
+  }
+  function go(dir){ gotoAbs(current+dir); }
+  function home(){ gotoAbs(0); }
 
-  function home(){ const i=cpIndex(0); replay(i>=0?i+1:0); tick(); }
+  if(channel) channel.onmessage=(ev)=>{
+    const m=ev.data||{};
+    if(m.type==='goto' && typeof m.index==='number') gotoAbs(m.index, true); // navigate without echoing
+    else if(m.type==='hello') broadcast(current);                            // answer a late-joining window
+  };
 
   // ---- Time-travel HUD (toggle H) -------------------------------------
   function drawHUD(){
@@ -429,13 +555,74 @@
     const h=$('#hud'); h.style.display=(h.style.display==='none'||!h.style.display)?'block':'none'; drawHUD();
   }
 
+  // ---- Presenter view (toggle P) --------------------------------------
+  const pad=n=>String(n).padStart(2,'0');
+  function fmt(ms){ const s=Math.max(0,Math.floor(ms/1000)); return pad(Math.floor(s/60))+':'+pad(s%60); }
+  function tickClock(){
+    if(!presenting) return;
+    const d=new Date();
+    $('#pv-clock').textContent=pad(d.getHours())+':'+pad(d.getMinutes());
+    $('#pv-elapsed').textContent=fmt(Date.now()-startTime);
+  }
+  // Render a slide into a preview box: clone it, render at full window size,
+  // then transform-scale down to the box width (faithful, since slides use vw/vh).
+  function scaleStage(frame){
+    const stage=frame.querySelector('.pv-stage');
+    const W=window.innerWidth||1, H=window.innerHeight||1;
+    stage.style.width=W+'px'; stage.style.height=H+'px';
+    stage.style.transform='scale('+(frame.clientWidth/W)+')';
+  }
+  function renderPreview(frame, idx){
+    const stage=frame.querySelector('.pv-stage'); stage.innerHTML='';
+    const src=(idx!=null)?slides[idx]:null;
+    if(!src) return;
+    const clone=src.cloneNode(true); clone.classList.add('active');
+    stage.appendChild(clone); scaleStage(frame);
+  }
+  function updatePresenter(idx){
+    $('#pv-pos').querySelector('.pos').textContent=idx+1;
+    $('#pv-tot').textContent=TOTAL;
+    renderPreview($('#pv-current'), idx);
+    renderPreview($('#pv-next'), idx+1<TOTAL?idx+1:null);
+    $('#pv-notes').innerHTML = NOTES[idx] || '<h4>—</h4>';
+  }
+  function refreshAudienceBtn(){
+    const el=$('#pv-audience'); if(!el) return;
+    if(audienceWin && !audienceWin.closed){ el.textContent='✓ audience window open — click to focus'; el.classList.remove('warn'); }
+    else { el.textContent='▶ open audience window'; el.classList.add('warn'); }
+  }
+  // Opening the audience window is an explicit click — NOT auto-fired by P.
+  // (A popup spawned on toggle steals focus and covers the presenter view on a single screen.)
+  function openAudience(){
+    if(audienceWin && !audienceWin.closed){ audienceWin.focus(); broadcast(current); refreshAudienceBtn(); return; }
+    audienceWin=window.open(location.pathname+location.search, 'spektrum-audience');
+    if(!audienceWin){ const el=$('#pv-audience'); el.textContent='popup blocked — allow popups, then click again'; el.classList.add('warn'); return; }
+    broadcast(current);          // sync the fresh window to our slide
+    refreshAudienceBtn();
+  }
+  function setPresenter(on){
+    presenting=on; document.body.classList.toggle('presenter', on);
+    if(on){
+      if(!startTime) startTime=Date.now();
+      if(!clockTimer) clockTimer=setInterval(tickClock,1000);
+      refreshAudienceBtn();
+      tickClock();
+      updatePresenter(Math.max(0,Math.min(TOTAL-1,current|0)));
+      broadcast(current);   // keep an already-open audience window in sync
+    }
+  }
+  function togglePresenter(){ setPresenter(!presenting); }
+
   // ---- Input ----------------------------------------------------------
   document.addEventListener('keydown',e=>{
     if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();go(+1)}
     else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(-1)}
     else if(e.key==='Home'){ e.preventDefault(); home(); }
-    else if(e.key.toLowerCase()==='h'){ toggleHUD(); }
+    else if(e.key.toLowerCase()==='h'){ if(!e.repeat) toggleHUD(); }
+    else if(e.key.toLowerCase()==='p'){ e.preventDefault(); if(!e.repeat) togglePresenter(); }  // guard auto-repeat → no open/close flicker
+    else if(e.key.toLowerCase()==='r'){ if(presenting && !e.repeat){ startTime=Date.now(); tickClock(); } }
     else if(e.key.toLowerCase()==='f'){
+      if(e.repeat) return;
       if(!document.fullscreenElement)document.documentElement.requestFullscreen();
       else document.exitFullscreen();
     }
@@ -444,11 +631,15 @@
   document.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
   document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)dx<0?go(+1):go(-1)},{passive:true});
   document.addEventListener('click',e=>{
+    if(presenting||$('#presenter').contains(e.target))return;   // presenter view drives via keys
     if($('#hud').contains(e.target)||$('#boot-error').contains(e.target))return;
     if(e.clientX>window.innerWidth*0.5)go(+1);else go(-1);
   });
+  window.addEventListener('resize',()=>{ if(presenting) updatePresenter(Math.max(0,Math.min(TOTAL-1,current|0))); });
+  $('#pv-audience').addEventListener('click', openAudience);
 
   render();
+  if(channel) channel.postMessage({type:'hello'});   // sync me to any window already open
 </script>
 </body>
 </html>
