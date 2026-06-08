@@ -125,6 +125,10 @@
   #pv-top .clock{margin-left:auto;font-family:var(--disp);font-size:1.1rem;color:var(--cyan)}
   #pv-audience{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.32rem .7rem;cursor:pointer}
   #pv-audience:hover{border-color:var(--acid);color:var(--acid)}
+  #pv-pace{color:var(--dim);transition:color .3s ease}
+  #pv-pace.late{color:var(--hot)}
+  #pv-pace #pv-elapsed{font-family:var(--disp)}
+  #pv-pace .psep{opacity:.45;margin:0 .15rem}
   #pv-left,#pv-right{display:flex;flex-direction:column;min-height:0;min-width:0;overflow:hidden}
   #pv-right{gap:14px}
   .pv-label{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--acid);margin-bottom:.45rem;display:block}
@@ -324,7 +328,7 @@
 <div id="presenter">
   <div id="pv-top">
     <span class="big" id="pv-pos"><span class="pos">1</span> / <span id="pv-tot">11</span></span>
-    <span>⏱ elapsed <span id="pv-elapsed">00:00</span></span>
+    <span id="pv-pace" title="elapsed / where you should be by the end of this slide — 30 min split across the content slides (first &amp; last ignored). Magenta = running late.">⏱ <span id="pv-elapsed">00:00</span> <span class="psep">/</span> <span id="pv-target">00:00</span></span>
     <button id="pv-audience" type="button" class="warn">▶ open audience window</button>
     <span class="clock">🕐 <span id="pv-clock">--:--</span></span>
   </div>
@@ -558,11 +562,29 @@
   // ---- Presenter view (toggle P) --------------------------------------
   const pad=n=>String(n).padStart(2,'0');
   function fmt(ms){ const s=Math.max(0,Math.floor(ms/1000)); return pad(Math.floor(s/60))+':'+pad(s%60); }
+
+  // Pacing target: 30 min split evenly across the content slides — the first
+  // and last slide are ignored (they carry no budget). paceTarget(idx) is the
+  // cumulative time you should be done by when you're on slide idx.
+  const TALK_SECONDS=30*60;
+  const PACE_SLIDES=Math.max(1, TOTAL-2);
+  const SLIDE_BUDGET=TALK_SECONDS/PACE_SLIDES;
+  function paceTarget(idx){ return idx<=0 ? 0 : Math.min(idx, PACE_SLIDES)*SLIDE_BUDGET; }
+  function updatePace(){
+    if(!presenting||!startTime) return;
+    const idx=Math.max(0,Math.min(TOTAL-1,current|0));
+    const ignored=(idx===0||idx===TOTAL-1);   // first & last aren't paced
+    const target=paceTarget(idx);
+    const tEl=$('#pv-target'); if(tEl) tEl.textContent= ignored ? '—' : fmt(target*1000);
+    const behind=!ignored && (Date.now()-startTime)/1000 > target;
+    const p=$('#pv-pace'); if(p) p.classList.toggle('late', behind);
+  }
   function tickClock(){
     if(!presenting) return;
     const d=new Date();
     $('#pv-clock').textContent=pad(d.getHours())+':'+pad(d.getMinutes());
     $('#pv-elapsed').textContent=fmt(Date.now()-startTime);
+    updatePace();
   }
   // Render a slide into a preview box: clone it, render at full window size,
   // then transform-scale down to the box width (faithful, since slides use vw/vh).
@@ -585,6 +607,7 @@
     renderPreview($('#pv-current'), idx);
     renderPreview($('#pv-next'), idx+1<TOTAL?idx+1:null);
     $('#pv-notes').innerHTML = NOTES[idx] || '<h4>—</h4>';
+    updatePace();
   }
   function refreshAudienceBtn(){
     const el=$('#pv-audience'); if(!el) return;
