@@ -114,316 +114,169 @@
 <div class="bar" id="bar"></div>
 <div class="deck" id="deck">
 
-  <!-- 1 TITLE -->
+  <!-- 1 TINKERER / TITLE -->
   <section class="slide">
     <div class="stagger">
-      <div class="kicker">Conference Talk · npm pkg: spektrum</div>
-      <h1>Escape the<br><span class="hot">Supply Chain</span>:<br>Bring a <span class="cyan float">Time Machine</span></h1>
-      <p class="dim" style="margin-top:1.8rem">How AI changed the way I think about dependencies, software ownership, and building for the future.</p>
-      <p style="margin-top:1rem"><span class="tag">your name</span> <span class="tag">your handle</span></p>
+      <div class="kicker">Conference Talk · a.s.r. · npm pkg: spektrum</div>
+      <h1>I'm a <span class="acid">tinkerer</span><br>and I build for the <span class="hot float">fun</span></h1>
+      <p style="margin-top:1.6rem">After a day's work at a.s.r. I close my laptop — and almost immediately open my own. Then I start tinkering on hobby projects.</p>
+      <p class="dim" style="margin-top:1rem">As we drift toward a fully-agentic way of working, I don't want to lose the <strong>fun</strong> side of coding — the creative process of building digital things. It doesn't have to be efficient, or clean, or original. As long as you're having fun.</p>
+      <p style="margin-top:1.4rem"><span class="tag">Danny de Zeeuw</span></p>
     </div>
   </section>
 
-  <!-- 2 INTRO -->
+  <!-- 2 PROTOTYPES -->
   <section class="slide">
     <div class="stagger">
-      <div class="kicker">Introduction</div>
-      <h2>A few years ago<br>I'd have <span class="hot">laughed</span></h2>
-      <p>If you'd told me I'd stand on a stage arguing for <em>fewer</em> dependencies in JavaScript… I would not have believed you.</p>
-      <p class="dim" style="margin-top:1rem">Because npm is one of the great success stories in software. This talk is <strong>not</strong> anti-npm.</p>
-    </div>
-  </section>
-
-  <!-- 3 NEED X? NPM INSTALL -->
-  <section class="slide">
-    <div class="stagger">
-      <div class="kicker">The reflex we all share</div>
-      <h2>Need something?</h2>
-      <div class="term" style="margin-top:.6rem">
-        <span class="c"># Need an HTTP client?</span><br>
-        <span class="prompt"></span><span class="g">npm install</span><br>
-        <span class="c"># Need state management?</span><br>
-        <span class="prompt"></span><span class="g">npm install</span><br>
-        <span class="c"># Need a templating engine?</span><br>
-        <span class="prompt"></span><span class="g">npm install</span><br>
-        <span class="c"># Need left-pad?</span><br>
-        <span class="prompt"></span><span class="m">…well. You know the story.</span> <span class="blink">▋</span>
+      <div class="kicker">A thousand ideas</div>
+      <h2>I build <span class="cyan">prototypes</span></h2>
+      <p>On any given day I have about a thousand things I want to build. Not to get rich — just because they're fun.</p>
+      <p style="margin-top:1rem">Lately my colleague <strong>Wessel</strong> and I have a ritual: every time a new AI model drops, we hand each other an assignment — build a prototype using <em>only</em> that model.</p>
+      <div class="grid3">
+        <div class="card"><p class="dim">Weather apps</p></div>
+        <div class="card"><p class="dim">Interactive maps of Amsterdam</p></div>
+        <div class="card"><p class="dim">A full 3D Lego brick builder</p></div>
       </div>
     </div>
   </section>
 
-  <!-- 4 THE MIRACLE OF NPM -->
+  <!-- 3 BACK IN TIME · GRAVITY WAVES -->
   <section class="slide">
     <div class="stagger">
-      <div class="kicker">The miracle of npm</div>
-      <h2>npm <span class="acid">won</span></h2>
-      <p>We stopped reinventing the wheel. Try shipping a 2026 web app without:</p>
+      <div class="kicker">Back in time · 2023</div>
+      <h2>Gravity Waves</h2>
+      <p>I dusted off an old idea: a little spaceship game where you ride <span class="cyan">gravity waves to jump back and forth through time</span> — the game state itself could rewind. I needed two things: a small templating engine and an event store.</p>
+      <p class="dim" style="margin-top:.8rem">Every library had so much overhead and config, so I did the stupid tinkering thing and tried to build my own.</p>
+      <div class="grid2">
+        <div class="card"><h3 class="dim">2023</h3><p class="dim" style="margin-top:.5rem">GPT-4 had just landed — a real step up. But hallucinations everywhere, no reasoning, and tiny context that degraded fast. Just you and a chat window.</p></div>
+        <div class="card"><h3 class="cyan">2026</h3><p class="dim" style="margin-top:.5rem">Models like <strong>Claude Opus 4.8</strong>: far more capable — but token-hungry, and you still have to guide them. And npm supply-chain attacks, seemingly every week.</p></div>
+      </div>
+      <p style="margin-top:1.1rem">Gravity Waves got stuck in time. But it looked like things had to <strong>change</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 4 NPM · THE GOOD -->
+  <section class="slide">
+    <div class="stagger">
+      <div class="kicker">First, credit where it's due</div>
+      <h2>npm is a <span class="acid">success story</span></h2>
+      <p>Thousands of ready solutions, so you don't reinvent the wheel every time. You stopped coding everything yourself — and trusted the packages were relatively safe.</p>
       <div class="grid3">
         <div class="card"><p class="dim">Routing libraries</p></div>
         <div class="card"><p class="dim">Build tools</p></div>
         <div class="card"><p class="dim">Database drivers</p></div>
         <div class="card"><p class="dim">Testing frameworks</p></div>
         <div class="card"><p class="dim">Auth libraries</p></div>
-        <div class="card"><p class="acid">Most of us wouldn't ship anything.</p></div>
+        <div class="card"><p class="acid">All the things that normally give you headaches.</p></div>
       </div>
-      <p style="margin-top:1.4rem"><strong>Dependencies are not the enemy.</strong> They're why our industry got fast.</p>
+      <p style="margin-top:1.2rem"><strong>Dependencies are not the enemy.</strong></p>
     </div>
   </section>
 
-  <!-- 5 THE TURN -->
-  <section class="slide" style="align-items:center;text-align:center">
-    <div class="stagger" style="margin:0 auto">
-      <h1 style="font-size:clamp(2.4rem,6vw,5rem)">But every<br>abstraction<br>has a <span class="hot">cost</span>.</h1>
-      <p class="dim" style="margin-top:1.6rem">And over the last few years, that cost got increasingly visible.</p>
-    </div>
-  </section>
-
-  <!-- 6 SUPPLY CHAIN PROBLEM -->
+  <!-- 5 THE SUPPLY CHAIN · THE BAD -->
   <section class="slide">
     <div class="stagger">
-      <div class="kicker">The supply chain problem</div>
-      <h2>We've all seen<br>the <span class="hot">headlines</span></h2>
+      <div class="kicker">…but lately it looked grim</div>
+      <h2>The <span class="hot">supply chain</span></h2>
       <ul>
-        <li>Maintainer accounts get compromised</li>
-        <li>API keys get stolen</li>
-        <li>Malicious updates get published</li>
-        <li>Typosquatting packages appear</li>
-        <li>Popular packages suddenly contain unexpected code</li>
+        <li>Keys stolen from big and small repos; packages infected</li>
+        <li>Keeping everything up to date — a frustration of its own <span class="dim">(Mend, Checkmarx…)</span></li>
+        <li>Dependencies on long-abandoned projects I never fully controlled</li>
+        <li>Typosquatting — tricking even the AI into installing malicious packages</li>
+        <li>All that package context burned <strong>tokens</strong>. Wasteful.</li>
       </ul>
-      <p style="margin-top:1.2rem">None of this is unique to npm. <strong>The problem isn't npm — it's complexity.</strong></p>
+      <p style="margin-top:1rem">So I asked: <strong class="acid">why do I even have all these dependencies?</strong></p>
+      <p class="dim" style="margin-top:.5rem">Big production projects need rigid, mature libraries for every edge case. My prototypes don't. So — who's pulling in ExpressJS just to serve a static page?</p>
     </div>
   </section>
 
-  <!-- 7 ATTACK SURFACE -->
-  <section class="slide" style="align-items:center;text-align:center">
-    <div class="stagger" style="margin:0 auto">
-      <div class="kicker" style="justify-content:center">The math of trust</div>
-      <h2>Bigger graph =<br>bigger <span class="hot">attack surface</span></h2>
-      <p style="margin:0 auto">Every package introduces risk. Every maintainer joins your trust chain. Every transitive dependency is code that runs <em>inside</em> your app.</p>
-    </div>
-  </section>
-
-  <!-- 8 MAINTENANCE TAX -->
+  <!-- 6 EXPRESSJS · LIVE DEMO -->
   <section class="slide">
     <div class="stagger">
-      <div class="kicker">The maintenance tax</div>
-      <h2>How many of these<br>are you running?</h2>
-      <div class="grid3">
-        <div class="card"><h3 class="cyan">Dependabot</h3></div>
-        <div class="card"><h3 class="cyan">Renovate</h3></div>
-        <div class="card"><h3 class="cyan">Mend</h3></div>
-        <div class="card"><h3 class="cyan">Snyk</h3></div>
-        <div class="card"><h3 class="cyan">Checkmarx</h3></div>
-        <div class="card"><p class="dim">Whole industries exist just to keep deps up to date.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 9 THE TREE -->
-  <section class="slide">
-    <div class="stagger">
-      <div class="kicker">Looks harmless…</div>
-      <h2>…until you<br><code>npm install</code></h2>
-      <div class="term" style="margin-top:.6rem">
-        My Application<br>
-        └── Package A<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;└── Package B<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── Package C<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── Package D<br><br>
-        <span class="prompt"></span><span class="g">npm install</span><br>
-        <span class="m">added 1,327 packages</span> <span class="blink">▋</span>
-      </div>
-      <p style="margin-top:1.2rem">Someone has to audit it. Maintain it. Update it. <strong>Sometimes that someone is you.</strong></p>
-    </div>
-  </section>
-
-  <!-- 10 OWNERSHIP -->
-  <section class="slide">
-    <div class="stagger">
-      <div class="kicker">The ownership question</div>
-      <h2>How much do you<br>actually <span class="acid">own</span>?</h2>
+      <div class="kicker">Live demo · same page, two ways</div>
+      <h2>Do you need <span class="hot">Express</span>?</h2>
       <div class="grid2">
-        <div class="card"><p class="big-num" style="font-size:clamp(2rem,6vw,4rem)">20k</p><p class="dim">lines you wrote yourself</p></div>
-        <div class="card"><p class="big-num" style="font-size:clamp(2rem,6vw,4rem);background:linear-gradient(120deg,var(--hot),var(--amber))">3M</p><p class="dim">lines of installed dependencies</p></div>
+        <div class="card">
+          <span class="tag">app-2 · Express 5</span>
+          <p class="big-num" style="font-size:clamp(1.8rem,5vw,3.2rem);background:linear-gradient(120deg,var(--hot),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent">65 pkgs</p>
+          <p class="dim">3.7&nbsp;MB in node_modules · 64 of them transitive</p>
+        </div>
+        <div class="card">
+          <span class="tag">app-1 · vanilla</span>
+          <p class="big-num" style="font-size:clamp(1.8rem,5vw,3.2rem)">0 deps</p>
+          <p class="dim">no install · no node_modules · no build</p>
+        </div>
       </div>
-      <p style="margin-top:1.4rem">Who can audit it? Extend it? Fix it when a package is abandoned? Often the honest answer is <strong class="hot">nobody — not fully</strong>. And usually that's fine. But it got me thinking.</p>
-    </div>
-  </section>
-
-  <!-- 11 THEN AI ARRIVED -->
-  <section class="slide">
-    <div class="stagger">
-      <div class="kicker">Then AI arrived</div>
-      <h2>AI does best on<br><span class="cyan">simple</span> projects</h2>
-      <p>Not necessarily <em>small</em>. <strong>Simple.</strong> Understandable architecture, predictable APIs, explicit behavior, limited dependencies.</p>
-      <p class="dim" style="margin-top:1rem">On those, AI can trace execution, suggest fixes, generate tests, refactor confidently. Open a project with hundreds of deps and framework magic, and the AI struggles.</p>
-      <p style="margin-top:1rem">And honestly? <strong>So did I.</strong></p>
-    </div>
-  </section>
-
-  <!-- 12 CONTEXT BUDGET -->
-  <section class="slide">
-    <div class="stagger">
-      <div class="kicker">AI has a context budget</div>
-      <h2>Humans have attention.<br>AI has <span class="acid">context</span>.</h2>
-      <p>Every dependency, every abstraction layer, every hidden implementation spends part of that budget.</p>
-      <p style="margin-top:1.2rem"><strong>Code isn't just written for humans anymore. It's written for machines that help humans.</strong></p>
-      <p class="dim" style="margin-top:.6rem">And that changes the design constraints.</p>
-    </div>
-  </section>
-
-  <!-- 13 GRAVITY WAVES -->
-  <section class="slide">
-    <div class="stagger">
-      <div class="kicker">The Gravity Waves story · 2024</div>
-      <h2>A little<br>spaceship game</h2>
-      <p>You piloted a ship through space — with a twist: you could move <span class="cyan">backward and forward through time</span>. The game state itself could rewind.</p>
-      <p style="margin-top:1rem">I needed exactly two things:</p>
-      <div class="grid2">
-        <div class="card"><h3 class="acid">A template engine</h3></div>
-        <div class="card"><h3 class="cyan">A state store with history</h3></div>
-      </div>
-      <p class="dim" style="margin-top:1.2rem">The existing libraries were mature, battle-tested, feature-rich — and <strong>huge</strong>. They weren't bad. They were solving bigger problems than I had. I needed <em>less</em>.</p>
-    </div>
-  </section>
-
-  <!-- 14 THE DANGEROUS IDEA -->
-  <section class="slide" style="align-items:center;text-align:center">
-    <div class="stagger" style="margin:0 auto">
-      <div class="kicker" style="justify-content:center">The dangerous idea</div>
-      <h1 style="font-size:clamp(2rem,5vw,4rem)">"What if I remove<br><span class="hot">all</span> the dependencies?"</h1>
-      <p class="dim" style="margin-top:1.4rem">Not because dependencies are bad. Because <em>this</em> project didn't need them.</p>
-    </div>
-  </section>
-
-  <!-- 15 BECAME SPEKTRUM -->
-  <section class="slide" style="align-items:center;text-align:center">
-    <div class="stagger" style="margin:0 auto">
-      <div class="kicker" style="justify-content:center">The experiments</div>
-      <p>Could I build a tiny template engine? A tiny state store? Keep everything understandable? Own every line?</p>
-      <h1 class="acid" style="margin-top:1.4rem">That became<br>Spektrum.</h1>
-    </div>
-  </section>
-
-  <!-- 16 THE IRONY -->
-  <section class="slide">
-    <div class="stagger">
-      <div class="kicker">The irony</div>
-      <h2>I just became<br>a <span class="hot">dependency</span></h2>
-      <p>The moment you publish a library, you create another package. You become another link in someone's trust chain.</p>
-      <p style="margin-top:1.2rem">So the goal was never <span class="strike">"eliminate dependencies."</span> That'd be absurd. The goal became:</p>
-      <h3 style="margin-top:1rem">"Understand every dependency." — starting with my own.</h3>
-    </div>
-  </section>
-
-  <!-- 17 SHIFT IN THINKING -->
-  <section class="slide">
-    <div class="stagger">
-      <div class="kicker">A shift in thinking</div>
-      <h2>AI helped build it →<br>I built it <span class="cyan">for AI</span></h2>
-      <p>Most frameworks optimize for developers. I wanted to optimize for developers, AI systems, auditing, and testing — all at once.</p>
-      <ul>
-        <li>Keep the codebase intentionally small</li>
-        <li>Reduce magic and hidden behavior</li>
-        <li>Make state transitions explicit and behavior observable</li>
-      </ul>
-      <p class="dim" style="margin-top:1rem">If AI can understand the whole framework, it can reason about everything built on top of it.</p>
-    </div>
-  </section>
-
-  <!-- 17b BACK TO BASICS / NO BUILD -->
-  <section class="slide">
-    <div class="stagger">
-      <div class="kicker">Back to basics</div>
-      <h2>Do you still<br>need <span class="cyan">TypeScript</span>?</h2>
-      <p>If you're coding with AI anyway — for a small library, hand-written <code>.d.ts</code> files (plus a little JSDoc) give you full autocomplete and typed consumers <strong>without a compile step</strong>.</p>
-      <div class="grid2">
-        <div class="card"><h3 class="dim">The usual</h3><p class="dim" style="margin-top:.5rem"><code>.ts</code> → tsc → bundler → <code>dist/</code></p></div>
-        <div class="card"><h3 class="acid">Spektrum</h3><p class="dim" style="margin-top:.5rem">plain <code>.js</code> + <code>.d.ts</code> → ship it</p></div>
-      </div>
-      <p style="margin-top:1.2rem">Strip the build step and you can drop the whole thing on a <strong>static host</strong> and it just works. No pipeline, no <code>dist/</code>, nothing to compromise between source and shipped.</p>
-      <p class="dim" style="margin-top:1rem">⚠️ honest scope: <code>.d.ts</code> types the boundary, not the implementation — pair with <code>// @ts-check</code> if you want in-body checking. And no — this isn't right for everything. But for prototypes? Wonderful.</p>
-    </div>
-  </section>
-
-  <!-- 18 DEMO -->
-  <section class="slide">
-    <div class="stagger">
-      <div class="kicker">Show, don't tell</div>
-      <h2 class="acid">Live demo</h2>
       <div class="term" style="margin-top:1rem">
-        <span class="prompt"></span><span class="g">npm i</span> spektrum<span class="c">   # 0 runtime deps, no build step</span><br><br>
-        <span class="y">import</span> spektrum, { setValue, bindDOM, run, replay } <span class="y">from</span> <span class="m">'spektrum'</span><br><br>
-        <span class="g">setValue</span>(<span class="m">'count'</span>, 0)<br>
-        <span class="g">bindDOM</span>(); <span class="g">run</span>()<br>
-        <span class="c">// every mutation recorded → replay(n) rebuilds any past state</span> <span class="blink">▋</span>
+        <span class="y">const</span> http = <span class="g">require</span>(<span class="m">'http'</span>);<br>
+        <span class="y">const</span> fs = <span class="g">require</span>(<span class="m">'fs'</span>);<br>
+        http.<span class="g">createServer</span>((req, res) =&gt; fs.<span class="g">createReadStream</span>(<span class="m">'index.html'</span>).pipe(res)).<span class="g">listen</span>(3012); <span class="blink">▋</span>
       </div>
-      <p class="dim" style="margin-top:1rem"><strong class="cyan">This slide deck is the demo.</strong> It navigates through Spektrum's own event store — press <strong>H</strong> to show the live history. Going back isn't a re-render; it's <code>replay(cursor−1)</code>.</p>
+      <p class="dim" style="margin-top:.8rem">Both render the <em>exact</em> same page. That 3.7&nbsp;MB is a lot of attack surface for a static page. <strong>Maybe these three lines are enough.</strong></p>
     </div>
   </section>
 
-  <!-- 19 BRINGING A TIME MACHINE -->
+  <!-- 7 AI-FIRST -->
   <section class="slide">
     <div class="stagger">
-      <div class="kicker">Bringing a time machine</div>
-      <h2>The game mechanic<br>became a <span class="cyan">tool</span></h2>
-      <p>State history. Time travel. Rewind. What started as a gameplay gimmick turned out to be an engineering primitive.</p>
-      <p class="dim" style="margin-top:1rem">Suddenly Spektrum wasn't just a template engine. It was an experiment in <strong>AI-first software design</strong>.</p>
-    </div>
-  </section>
-
-  <!-- 20 TIME TRAVEL AS TESTING -->
-  <section class="slide">
-    <div class="stagger">
-      <div class="kicker">Time travel as a testing model</div>
-      <h2>Rewind instead<br>of <span class="hot">rebuild</span></h2>
-      <div class="grid2">
-        <div class="card">
-          <h3 class="dim">Humans test like this</h3>
-          <p class="dim" style="margin-top:.6rem">run → reset → run → reset → run</p>
-        </div>
-        <div class="card">
-          <h3 class="acid">What if state is part of the model?</h3>
-          <p class="dim" style="margin-top:.6rem">scenario A → rewind → B → rewind → C</p>
-        </div>
+      <div class="kicker">A mindset shift</div>
+      <h2>Going <span class="cyan">AI-first</span></h2>
+      <p>If I have no dependencies, the AI doesn't have to load all that context. Cheaper. More focused on what actually matters in the project. So how do I make the whole AI workflow faster and cheaper?</p>
+      <div class="pillars">
+        <div class="pillar"><h4>Zero deps</h4><p>nothing to audit, update, or burn context on</p></div>
+        <div class="pillar"><h4>Zero build</h4><p>no bundler, no config files, no GitHub Actions</p></div>
+        <div class="pillar"><h4>Pure vanilla JS</h4><p>kept only <code>.d.ts</code> files for a little TypeScript support</p></div>
       </div>
-      <p style="margin-top:1.2rem">No rebuilding. No reinitializing. No starting from scratch every time.</p>
+      <p class="dim" style="margin-top:1.2rem">Bonus: merge to <code>main</code> and it's instantly live on GitHub Pages — completely free.</p>
     </div>
   </section>
 
-  <!-- 21 SHOULD WE STOP USING DEPS -->
+  <!-- 8 GUINEA PIG · CONTEXT FILE -->
   <section class="slide">
     <div class="stagger">
-      <div class="kicker">So should we stop using dependencies?</div>
-      <h2 class="acid">Absolutely not.</h2>
-      <p>The npm ecosystem is one of our industry's greatest achievements. The message is simpler — before adding a dependency, ask:</p>
-      <ul style="gap:.7rem">
-        <li>Does Node.js already provide this?</li>
-        <li>Do I really need this functionality?</li>
-        <li>Is the package actively maintained?</li>
-        <li>What does its dependency tree look like?</li>
-        <li>Can I — my team — <span class="cyan">and AI</span> — audit it?</li>
-        <li><strong>What's the true cost over the lifetime of the project?</strong></li>
-      </ul>
+      <div class="kicker">The guinea pig</div>
+      <h2>I wrote a <span class="acid">context file</span></h2>
+      <p>A new model dropped, and I found my broken Gravity Waves. The perfect test: a templating engine with a built-in time-machine — zero deps, zero build. I wrote down what it was, its functionality and the new restrictions, then let the AI work it out phase by phase, to-do by to-do.</p>
+      <div class="term" style="margin-top:.8rem;font-size:.82rem;line-height:1.6">
+        <span class="c"># AGENTS.md — driving Spektrum as an AI agent</span><br>
+        <span class="c">## Why Spektrum for agents</span><br><br>
+        <span class="y">~1100 LOC, single file</span> — the entire engine fits in<br>
+        &nbsp;&nbsp;your context window. One Read and you've grokked it.<br>
+        <span class="y">setValue('user.email','x')</span> — path-based mutation is<br>
+        &nbsp;&nbsp;structured data, easy for an LLM to synthesize.<br>
+        <span class="y">time-travel is the primitive</span> — try an edit,<br>
+        &nbsp;&nbsp;evaluate, roll back. Every move is replayable. <span class="blink">▋</span>
+      </div>
+      <p class="dim" style="margin-top:.8rem">No endless reasoning, no drifting through dependencies, lowest token usage ever. It worked so well it became a real npm package: <strong class="acid">Spektrum</strong>.</p>
     </div>
   </section>
 
-  <!-- 22 CONCLUSION -->
+  <!-- 9 LESS IS MORE -->
   <section class="slide">
     <div class="stagger">
-      <div class="kicker">Conclusion</div>
-      <h2>Understanding is<br><span class="acid">valuable</span> again</h2>
-      <p>Software is no longer consumed only by humans. AI reads it, tests it, audits it, extends it. So simplicity matters again — not because complexity is evil, but because understanding is valuable.</p>
-      <h3 style="margin-top:1.4rem">Maybe the answer isn't to eliminate dependencies. Maybe it's to understand them better.</h3>
+      <div class="kicker">Less is more</div>
+      <h2>I became my own<br><span class="hot">dependency</span></h2>
+      <div class="grid3">
+        <div class="card"><h3 class="cyan" style="font-size:1.1rem">D&amp;D</h3><p class="dim">text-based AI-assisted adventure</p></div>
+        <div class="card"><h3 class="cyan" style="font-size:1.1rem">3D Lego</h3><p class="dim">brick builder client</p></div>
+        <div class="card"><h3 class="cyan" style="font-size:1.1rem">Web Stikkers</h3><p class="dim">WebGL card renderer</p></div>
+        <div class="card"><h3 class="cyan" style="font-size:1.1rem">SKYo</h3><p class="dim">weather app w/ satellite imagery</p></div>
+        <div class="card"><h3 class="cyan" style="font-size:1.1rem">SeedScape</h3><p class="dim">procedurally generated farming game</p></div>
+        <div class="card"><h3 class="acid" style="font-size:1.1rem">Spektrum</h3><p class="dim">templating + event store</p></div>
+      </div>
+      <p style="margin-top:1.1rem">Funny — by publishing Spektrum I became an npm dependency myself. But: <strong>no transitive deps</strong>, tiny source, and <strong class="acid">100 / 100 / 100</strong> test coverage. The attack surface is minimal.</p>
+      <p class="dim" style="margin-top:.5rem">↳ this very deck runs on Spektrum — press <strong>H</strong> for the live time-travel HUD.</p>
     </div>
   </section>
 
-  <!-- 23 CLOSE -->
+  <!-- 10 END · YOUR TURN -->
   <section class="slide" style="align-items:center;text-align:center">
     <div class="stagger" style="margin:0 auto">
-      <div class="kicker" style="justify-content:center">Thank you</div>
-      <h1>Or occasionally…<br>bring a <span class="cyan float">time machine</span>.</h1>
-      <p style="margin-top:1.6rem"><span class="tag">npmjs.com/package/spektrum</span> <span class="tag">github → your repo</span> <span class="tag">@you</span></p>
+      <div class="kicker" style="justify-content:center">Your turn</div>
+      <h1>Pick up the<br><span class="acid">challenge</span></h1>
+      <p style="margin:1.6rem auto 0">Take a hobby project. Try zero dependencies, zero build steps. Chances are high it'll work just fine without the baggage — and it might just be <span class="cyan">fun</span> again.</p>
+      <p style="margin-top:1.6rem"><span class="tag">npmjs.com/package/spektrum</span> <span class="tag">github.com/D-dezeeuw</span></p>
+      <h3 style="margin-top:1.4rem">Questions?</h3>
     </div>
   </section>
 
