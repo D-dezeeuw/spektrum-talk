@@ -64,6 +64,7 @@
   .hot{color:var(--hot)}
   .cyan{color:var(--cyan)}
   .amber{color:var(--amber)}
+  .white{color:#fff}
   strong{color:var(--acid);font-weight:700}
 
   ul{list-style:none;margin-top:1rem;display:flex;flex-direction:column;gap:1rem}
@@ -74,6 +75,7 @@
     background:linear-gradient(120deg,var(--cyan),var(--acid));-webkit-background-clip:text;background-clip:text;color:transparent}
 
   .card{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:14px;padding:1.4rem 1.6rem;backdrop-filter:blur(4px)}
+  .card h3{color:#999;}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:1.4rem}
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.4rem}
 
@@ -155,10 +157,10 @@
   <!-- 1 TITLE CARD -->
   <section class="slide" style="align-items:center;text-align:center">
     <div class="stagger" style="margin:0 auto">
-      <div class="kicker" style="justify-content:center">A passion talk · npm pkg: spektrum</div>
+      <div class="kicker" style="justify-content:center">a.s.r. tech conference '26 ·</div>
       <h1>Escape the<br><span class="hot">Supply Chain</span><br>Bring a <span class="cyan float">Time Machine</span></h1>
       <h3 style="margin-top:1.6rem">How AI changed the way I build.</h3>
-      <p style="margin-top:1.6rem"><span class="tag">Danny de Zeeuw</span></p>
+      <p style="justify-content:center;margin: auto 1.6rem auto 0;"><span class="tag">Danny de Zeeuw</span></p>
     </div>
   </section>
 
@@ -167,21 +169,31 @@
     <div class="stagger">
       <div class="kicker">Who I am</div>
       <h1>I'm a <span class="acid">tinkerer</span><br>I build for <span class="hot float">fun</span></h1>
-      <h3 style="margin-top:1.6rem">Not <span class="strike">clean</span>. Not <span class="strike">efficient</span>. Not <span class="strike">original</span>.</h3>
-      <p class="dim" style="margin-top:1.2rem">As we go agentic, don't lose the creative side of coding.</p>
+      <h3 style="margin-top:1.6rem">It does not have to be perfect or original.</h3>
     </div>
   </section>
 
   <!-- 3 PROTOTYPES RITUAL -->
   <section class="slide">
     <div class="stagger">
-      <div class="kicker">~1000 ideas, just for fun</div>
+      <div class="kicker">What are you doing?</div>
       <h2>New model? <span class="cyan">Build a prototype</span></h2>
-      <p class="dim">The ritual with Wessel: every release, one app built with <em>only</em> that model.</p>
+      <h3 class="white" style="margin-top:1.4rem">Everyday a <span class="hot">thousand</span> ideas</h3>
       <div class="grid3">
         <div class="card"><h3 style="font-size:1.1rem">Weather app</h3></div>
-        <div class="card"><h3 style="font-size:1.1rem">Amsterdam maps</h3></div>
+        <div class="card"><h3 style="font-size:1.1rem">Rotterdam maps</h3></div>
         <div class="card"><h3 style="font-size:1.1rem">3D Lego builder</h3></div>
+        <div class="card"><h3 style="font-size:1.1rem">Conspiracy Generator</h3></div>
+        <div class="card"><h3 style="font-size:1.1rem">WebGL Card library</h3></div>
+        <div class="card"><h3 style="font-size:1.1rem">AI Dungeons and Dragons client</h3></div>
+        <div class="card"><h3 style="font-size:1.1rem">Procedural Generation farming sim</h3></div>
+        <div class="card"><h3 style="font-size:1.1rem">AI Spotify playlist generator</h3></div>
+        <div class="card"><h3 style="font-size:1.1rem">Personalized conference guide</h3></div>
+        <div class="card"><h3 style="font-size:1.1rem">LLM Linux devops agent</h3></div>
+        <div class="card"><h3 style="font-size:1.1rem">AI stock trading dashboard</h3></div>
+        <div class="card"><h3 style="font-size:1.1rem">Programmable AI music generator</h3></div>
+
+
       </div>
     </div>
   </section>
@@ -191,8 +203,8 @@
     <div class="stagger">
       <div class="kicker">The idea · 2023</div>
       <h1 style="font-size:clamp(2.2rem,6vw,5rem)">A game that<br><span class="cyan float">rewinds time</span></h1>
-      <h3 style="margin-top:1.4rem">Gravity Waves: a spaceship that jumps through its own past.</h3>
-      <p class="dim" style="margin-top:1.4rem">So I tried to build the engine myself: a <span class="acid">template engine</span> + an <span class="acid">event store</span>.</p>
+      <h3 style="margin-top:1.4rem">The <span class="acid">Tinkerers</span> curse</h3>
+      
     </div>
   </section>
 
@@ -375,7 +387,7 @@
 </div>
 
 <div class="chrome">
-  <span>Spektrum · Escape the Supply Chain <span id="engine" class="dim">· booting…</span></span>
+  <span>Escape the Supply Chain <span id="engine" class="dim">· booting…</span></span>
   <span class="hint">← → / space · F fullscreen · H HUD · P presenter</span>
   <span><span id="cur">1</span> / <span id="tot">24</span></span>
 </div>
@@ -449,51 +461,66 @@
     `<h4>Title</h4>
       <p>Welcome — <em>Escape the Supply Chain: bring a time machine.</em></p>
       <p>How AI changed the way I think about dependencies, ownership, and building for the future. Keep it light — this is a passion talk.</p>`,
+
     `<h4>Intro · tinkerer</h4>
       <p>I'm a tinkerer, and I'm here just to share my passion with you — and to show how my workflow has changed with all the changes around us.</p>
       <p>After a day's work at a.s.r. I close my laptop and almost immediately open my own, and start tinkering on my own hobby projects.</p>
       <p>In a time where we're slowly getting to a full-agentic way of working, I think we must not lose sight of the fun side of coding — the creative process of building digital things. It doesn't always matter that things could be more efficient or clean, or that you're reinventing the wheel for the fifth time. As long as you're having fun.</p>`,
+    
     `<h4>Prototypes</h4>
       <p>On any given day I have about a thousand ideas I want to build. Not that it's going to make me rich — just fun things I want to build.</p>
       <p>Lately I have this thing with my colleague Wessel: every time a new AI model releases, we give each other an assignment where we have to build a prototype only with that AI model.</p>
       <p>We build all kinds of stuff — weather apps, apps with interactive maps of Amsterdam, and a complete 3D Lego brick builder.</p>`,
+    
     `<h4>Gravity Waves · the idea</h4>
       <p>One of those times, I wanted to pick one of my old ideas and see what challenges it would give me. So let's go back in time, to around 2023, when I wanted to create a small video game called "Gravity Waves".</p>
       <p>It was supposed to be a game with a spaceship using gravity waves to jump back and forth in time. For that I needed a small templating engine and an event store to rewind time. Everything had so much overhead and configuration, so I did the stupid tinkering thing and tried to build one myself.</p>`,
+    
     `<h4>Gravity Waves · 2023 → 2026</h4>
       <p>AIs in 2023 were less sophisticated than today, so it drifted all kinds of ways and context filled up immediately. Context files weren't really a thing — it was basically just you and the chat window. GPT-4 had just come out, a step in the right direction, but hallucinations were still a big issue, there was no reasoning, and the context window was tiny — just 8k tokens, 32k at most — and degraded fast. Gravity Waves got stuck in time and I forgot about it.</p>
       <p>Back to 2026: now we have models like Claude Opus 4.6 — much more capable, but also token-hungry, and context-wise you still need to guide the AI. On top of that we had npm supply-chain attacks seemingly every week. To me, it looked like things had to change.</p>`,
+    
     `<h4>npm — the good</h4>
       <p>First of all, npm is an amazing software-engineering success story. It gives us thousands of package solutions, so we don't have to reinvent the wheel every single time.</p>
       <p>You didn't have to code everything yourself anymore, and you knew the packages were relatively safe and secure. It brought some awesome things: routing libraries, build tools, database drivers, testing frameworks, authentication libraries — all the things that normally give you headaches.</p>`,
+    
     `<h4>The supply chain</h4>
       <p>But a few months back, npm looked a bit grim. Keys got stolen from big and small repositories, and packages got infected. Keeping all those packages up to date was a frustration all by itself (Mend, Checkmarx).</p>
       <p>Next to that, I had dependencies on projects long abandoned, and I never had full control over the code since it depended on those sources. Not to mention typosquatting, where they tricked the AI into installing malicious packages — which kept you on your toes.</p>
       <p>On top of that, my AI models had a hard time with all the context of all those packages; it used a lot of tokens to make sense of it. Quite wasteful.</p>`,
+    
     `<h4>The supply chain · the realization</h4>
       <p>So I asked myself: why do I even have all those npm dependencies? Don't get me wrong — with large production-level projects you need rigid, mature libraries to catch all the edge-cases. But for my prototype projects, that didn't matter. For example: who's using ExpressJS in there, or a different HTTP server?</p>`,
+    
     `<h4>Express — LIVE DEMO</h4>
       <p class="cue">DEMO ▸ two terminals in examples/.</p>
       <p>ExpressJS, just to show a static page, is a lot. <strong>app-2</strong>: <code>node app-2/app-2.js</code> (:3013) — show node_modules: Express 5 pulls in 65 packages / 3.7 MB. (The old "28 deps / 586 KB" figure was Express 4 / bundle size — use the live number on screen.)</p>
       <p><strong>app-1</strong>: <code>node app-1.js</code> (:3012) — the same page from three lines of plain http: no install, no node_modules.</p>
       <p>Both render the exact same page. Those transitive packages are a lot of attack surface for a static page. Maybe that single bit of code is enough.</p>`,
+    
     `<h4>AI-first</h4>
       <p>Then it crossed my mind: if I don't have any dependencies, the AI doesn't have to use that much context. That should be a lot cheaper, and much more focused on what matters in the project.</p>
       <p>So what if I went about it with an AI-first mindset — how can I make the AI workflow more efficient, faster, and cheaper? Build steps slowed me down; if I don't have those, I don't need GitHub Actions, for example. And if I don't have configuration files for every dependency, that speeds things up too. I only kept .d.ts type-declaration files for a bit of TypeScript support.</p>`,
+    
     `<h4>AI-first · the challenge</h4>
       <p>So I set myself a challenge: zero dependencies, zero build steps — just pure vanilla JavaScript. As a nice bonus, when I merge to main on GitHub, it's instantly available on GitHub Pages, completely free.</p>`,
+    
     `<h4>Guinea pig · context file</h4>
       <p class="cue">SHOW ▸ open AGENTS.md (the real context file).</p>
       <p>About a month ago a new AI model came out, and I stumbled on my old broken Gravity Waves project. This would be the perfect test: can I make a templating engine with an included time-machine — no dependencies, no build steps?</p>
       <p>I started writing context files describing what it should be about, its functionality, plus its new restrictions, and let it work it out phase by phase, to-do item per to-do item — and it went very well. No endless reasoning, no drifting into dependencies, and the token usage was smaller than ever.</p>`,
+    
     `<h4>It became Spektrum</h4>
       <p>In fact it worked out so well that I turned it into an official npmjs.com package called Spektrum.</p>`,
+    
     `<h4>Less is more · showcase</h4>
       <p>Unfortunately Gravity Waves never saw the light of day, but I've used Spektrum in a ton of my projects already — from a weather app to an AI-assisted Dungeons &amp; Dragons text adventure (see GitHub): D&amp;D, 3D Lego, Web Stikkers, SKYo, SeedScape, and Spektrum itself.</p>`,
+    
     `<h4>Less is more · the payoff</h4>
       <p>The funny thing is that with Spektrum I became my own npm dependency — which sort of undermines this whole session. But because it has no transitive dependencies and the source code is so small, I've limited the attack surface to a minimum. I also make sure I have a 100/100/100 score on the unit tests, so every method and branch is tested.</p>
       <p>All in all, "less is more" worked for me and my tinkering. Sometimes going back to a time before all the build pipelines, library configurations, massive imports, and complex CI/CD is just refreshing.</p>
       <p>(This very deck runs on Spektrum — press H for the live time-travel HUD.)</p>`,
+    
     `<h4>Your turn</h4>
       <p>Lastly, I want to invite you to pick up that challenge for a hobby project, and see where it brings you. Chances are high you can implement that project just fine without all that baggage.</p>
       <p>Questions?</p>`,
@@ -527,7 +554,7 @@
   // Navigation = replay() to a checkpoint's index. Verified against
   // spektrum@1.1.0: appState merges on tick, so we read the slide from the
   // system's `state` arg, never synchronously from appState.
-  $('#engine').textContent='· running on Spektrum';
+  $('#engine').textContent='· Danny de Zeeuw';
 
   let current = 0;   // updated only by the system callback below
 
